@@ -9,15 +9,15 @@ import java.util.Date
 @Entity("todos")
 data class TodoEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+    var id: Int = 0,
     @ColumnInfo("title")
-    val title: String,
+    var title: String,
     @ColumnInfo("subtitle")
-    val subtitle: String,
+    var subtitle: String,
     @ColumnInfo("done")
-    val done: Boolean = false,
+    var done: Boolean = false,
     @ColumnInfo("added")
-    val createdAt: Long = System.currentTimeMillis(),
+    var added: Long = System.currentTimeMillis(),
 )
 
-val TodoEntity.createdAtDate: String get() = SimpleDateFormat("yyyy/MM/dd hh:mm").format(Date(createdAt))
+val TodoEntity.addDate: String get() = SimpleDateFormat("yyyy/MM/dd hh:mm").format(Date(added))
