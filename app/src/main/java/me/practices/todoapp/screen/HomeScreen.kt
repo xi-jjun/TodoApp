@@ -38,6 +38,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.viewmodel.compose.viewModel
 import me.practices.todoapp.database.TodoEntity
+import me.practices.todoapp.ui.theme.ubuntuFont
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -113,12 +114,13 @@ fun HomeScreen(
                             setDialogOpen(false)
                         }
                     },
+                    shape = RoundedCornerShape(5.dp),
                     modifier = Modifier.fillMaxWidth(),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = MaterialTheme.colorScheme.secondary
                     )
                 ) {
-                    Text(text = "Submit", color = Color.White)
+                    Text(text = "Submit", color = Color.White, fontFamily = ubuntuFont)
                 }
             }
         }
@@ -131,8 +133,8 @@ fun HomeScreen(
                 onClick = {
                     setDialogOpen(true)
                 },
-                containerColor = Color.White,
-                contentColor = MaterialTheme.colorScheme.primary
+                contentColor = Color.White,
+                containerColor = MaterialTheme.colorScheme.primary
             ) {
                 Icon(Icons.Default.Add, contentDescription = null)
             }
