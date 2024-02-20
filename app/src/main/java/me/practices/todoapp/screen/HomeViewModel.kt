@@ -24,14 +24,11 @@ class HomeViewModel : ViewModel(), KoinComponent {
     }
 
     fun getTodos() {
-        Log.d("HomeViewModel", "start getTodos")
         viewModelScope.launch(Dispatchers.IO) {
-            repository.getTodos().collect {
-                Log.d("HomeViewModel", "item -> ${it}")
-                _todos.update { it }
+            repository.getTodos().collect { data: List<TodoEntity> ->
+                _todos.update { data }
             }
         }
-        Log.d("HomeViewModel", "end getTodos => result : ${todos}")
     }
 
     fun addTodo(todo: TodoEntity) {
